@@ -1,9 +1,9 @@
 #include <gtest/gtest.h>
 #include <iostream>
-#include <allocator_global_heap.h>
-#include <client_logger_builder.h>
-#include <logger.h>
-#include <logger_builder.h>
+#include </home/mp_os/allocator/allocator_global_heap/include/allocator_global_heap.h>
+#include </home/mp_os/logger/client_logger/include/client_logger_builder.h>
+#include </home/mp_os/logger/logger/include/logger.h>
+#include </home/mp_os/logger/logger/include/logger_builder.h>
 
 TEST(allocatorGlobalHeapTests, test1)
 {

@@ -1,10 +1,10 @@
 #ifndef MATH_PRACTICE_AND_OPERATING_SYSTEMS_ALLOCATOR_ALLOCATOR_GLOBAL_HEAP_H
 #define MATH_PRACTICE_AND_OPERATING_SYSTEMS_ALLOCATOR_ALLOCATOR_GLOBAL_HEAP_H
 
-#include <allocator.h>
-#include <logger.h>
-#include <logger_guardant.h>
-#include <typename_holder.h>
+#include </home/mp_os/allocator/allocator/include/allocator.h>
+#include </home/mp_os/logger/logger/include/logger.h>
+#include </home/mp_os/logger/logger/include/logger_guardant.h>
+#include </home/mp_os/common/include/typename_holder.h>
 
 class allocator_global_heap final:
     public allocator,
