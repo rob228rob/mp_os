@@ -26,7 +26,7 @@ public:
 
     virtual logger const *log(
         std::string const &message,
-        logger::severity severity) const noexcept = 0;
+        logger::severity severity) const noexcept = 0; //add const
 
 public:
 
@@ -54,6 +54,10 @@ protected:
         logger::severity severity);
 
     static std::string current_datetime_to_string() noexcept;
+
+    static std::string current_date_to_string() noexcept;
+
+    static std::string current_time_to_string() noexcept;
 
 };
 
