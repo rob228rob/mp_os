@@ -1,7 +1,9 @@
 #ifndef MATH_PRACTICE_AND_OPERATING_SYSTEMS_SERVER_LOGGER_BUILDER_H
 #define MATH_PRACTICE_AND_OPERATING_SYSTEMS_SERVER_LOGGER_BUILDER_H
 
-#include <logger_builder.h>
+#include </home/mp_os/logger/logger/include/logger_builder.h>
+#include <map>
+#include <set>
 
 class server_logger_builder final:
     public logger_builder
@@ -9,7 +11,10 @@ class server_logger_builder final:
 
 public:
 
+
     server_logger_builder();
+
+    server_logger_builder(std::string format);
 
     server_logger_builder(
         server_logger_builder const &other);
@@ -25,7 +30,19 @@ public:
 
     ~server_logger_builder() noexcept override;
 
+private:
+
+    std::string _port;
+
+    std::string _format;
+
+    std::map<std::string, std::set<logger::severity>> _streams;
+
+    std::set<logger::severity> _console_severities; 
+
 public:
+
+    logger_builder *set_port(std::string &port);
 
     logger_builder *add_file_stream(
         std::string const &stream_file_path,
