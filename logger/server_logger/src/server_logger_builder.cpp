@@ -8,7 +8,7 @@
 
 server_logger_builder::server_logger_builder()
 {
-
+    _format = "%s %m %t %d";
 }
 
 server_logger_builder::server_logger_builder(std::string format) : _format(format)

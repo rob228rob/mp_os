@@ -2,6 +2,9 @@
 #include <zmq.hpp>
 #include "/home/mp_os/logger/server_logger/include/server_logger.h"
 
+#define MAX_MSG_SIZE 128
+
+
 server_logger::server_logger(std::string format) : _format(format), _context(1), _socket(_context, ZMQ_PUSH)
 {
     _socket.connect("tcp://localhost:5555");
@@ -92,7 +95,7 @@ void server_logger::zmq_send_message(const std::string &text, logger::severity s
     std::string str_severity = severity_to_string(severity);
     std::string msg_str = str_severity + " " + text;
   
-    const size_t max_message_size = 4096;
+    const size_t max_message_size = MAX_MSG_SIZE;
     size_t message_length = msg_str.size();
     auto start = std::chrono::high_resolution_clock::now(); 
 
