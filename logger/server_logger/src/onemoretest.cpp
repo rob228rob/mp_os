@@ -8,6 +8,8 @@
 #include "/home/mp_os/logger/server_logger/include/server_logger_builder.h"
 #include "/home/mp_os/logger/server_logger/include/server_logger.h"
 #include "/home/mp_os/logger/logger/include/logger.h"
+#include "/home/mp_os/logger/client_logger/include/client_logger_builder.h"
+#include "/home/mp_os/logger/client_logger/include/client_logger.h"
 
 void zmq_receiver(zmq::context_t& context, const std::string& port, std::mutex& mtx) {
     zmq::socket_t socket(context, ZMQ_PULL);
@@ -19,6 +21,7 @@ void zmq_receiver(zmq::context_t& context, const std::string& port, std::mutex& 
 
     while (true) {
         try {
+            //logger* cln_lgr = new client_logger_builder()->build;
             zmq::message_t message;
             zmq::recv_result_t result = socket.recv(message, zmq::recv_flags::dontwait);
 
@@ -39,7 +42,7 @@ void zmq_receiver(zmq::context_t& context, const std::string& port, std::mutex& 
 
             std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
-            if (std::chrono::steady_clock::now() - start >= std::chrono::seconds(10)) {
+            if (std::chrono::steady_clock::now() - start >= std::chrono::seconds(3)) {
                 break;
             }
         }
@@ -62,12 +65,12 @@ int main() {
     builder->set_port(port1);
     logger* loggr = builder->build();
     std::string msg = "start";
-    for (int i = 0; i < 4099; ++i) 
+    for (int i = 0; i < 1000; ++i) 
     {
-        msg += "x";
+        msg += std::to_string(i);
         if (i % 100 == 0) msg += std::to_string(i);
     }
-    loggr->error("sadfjksdnlcsmdlcmsdl;clmsd;cmsd; dskcsd;mcsd mcsldkmmcdsl cldsnc sdcn;asdas[dma asda;lsd;alsmd downdnokcnokdncd dpwnckwdoncowkdc wakcas");
+    loggr->error("message 2");
     loggr->debug(msg);
 
 
