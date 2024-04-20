@@ -38,6 +38,7 @@ TEST(positiveTests, test1)
                 logger::severity::information
             }
         });
+
     allocator *subject = new allocator_boundary_tags(sizeof(int) * 40, nullptr, logger, allocator_with_fit_mode::fit_mode::first_fit);
     
     auto const *first_block = reinterpret_cast<int const *>(subject->allocate(sizeof(int), 10));
